@@ -1,0 +1,38 @@
+import xml.etree.ElementTree as ET
+
+# Створення XML-файлу для схеми draw.io з новими AI-сервісами
+diagram = ET.Element("mxGraphModel")
+root = ET.SubElement(diagram, "root")
+
+# Додавання стандартних елементів UML-діаграми
+elements = [
+    {"id": "1", "label": "Home", "color": "yellow"},
+    {"id": "2", "label": "Product", "color": "yellow"},
+    {"id": "3", "label": "Cart", "color": "yellow"},
+    {"id": "4", "label": "Login/Registration", "color": "yellow"},
+    {"id": "5", "label": "Profile", "color": "yellow"},
+    {"id": "6", "label": "Checkout", "color": "yellow"},
+    {"id": "7", "label": "userService", "color": "green"},
+    {"id": "8", "label": "orderService", "color": "purple"},
+    {"id": "9", "label": "itemService", "color": "blue"},
+    {"id": "10", "label": "Hibernate ORM", "color": "gray"},
+    {"id": "11", "label": "MySQL item_db", "color": "blue"},
+    {"id": "12", "label": "MySQL user_db", "color": "green"},
+    {"id": "13", "label": "MySQL order_db", "color": "purple"},
+    {"id": "14", "label": "Recommendation System", "color": "orange"},
+    {"id": "15", "label": "ChatBot Service", "color": "orange"},
+    {"id": "16", "label": "Smart Search", "color": "orange"},
+    {"id": "17", "label": "Description Generator", "color": "orange"},
+    {"id": "18", "label": "Dynamic Pricing", "color": "orange"}
+]
+
+# Додавання вузлів у XML
+for elem in elements:
+    node = ET.SubElement(root, "mxCell", id=elem["id"], value=elem["label"], style=f"fillColor={elem['color']};")
+
+# Збереження у файл
+tree = ET.ElementTree(diagram)
+file_path = "/mnt/data/updated_uml_diagram.xml"
+tree.write(file_path)
+
+file_path
